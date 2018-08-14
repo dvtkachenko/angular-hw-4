@@ -1,0 +1,8 @@
+<div class="container mt-4">
+  <ngx-spinner type="ball-atom" loadingText="Processing ...">
+  </ngx-spinner>
+  <app-add-new-post-form (onAddNewPost)='onAddPost($event)' (onEditPost)='onEditPost($event)'></app-add-new-post-form>
+  <div class="row">
+    <app-post-item class="col col-6 mb-3" *ngFor="let post of posts" [post]='post' (deletePost)='onDelete($event)'></app-post-item>
+  </div>
+</div>

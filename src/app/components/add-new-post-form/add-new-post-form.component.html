@@ -1,0 +1,27 @@
+<div class="card card-body col-6 mx-auto mb-5">
+  <h3 class="card-title"> {{ formPost.id ? 'Edit post' : 'Add post' }} </h3>
+    <form novalidate #form="ngForm">
+
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" class="form-control" [(ngModel)]="formPost.title" name="title" #title="ngModel" [ngClass]="{ 'is-invalid': title.invalid && form.submitted }"
+          required>
+        <div class="invalid-feedback">
+          Title can not be empty
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="body">Body</label>
+        <textarea id="body" class="form-control" [(ngModel)]="formPost.body" name="body" #body="ngModel" [ngClass]="{ 'is-invalid': body.invalid && form.submitted }"
+          required>
+          </textarea>
+        <div class="invalid-feedback">
+          Body can not be empty
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary m-1" *ngIf="!formPost.id" (click)="onAdd()" [disabled]="form.invalid">Add</button>
+      <button class="btn btn-warning m-1" *ngIf="formPost.id" (click)="onEdit()" [disabled]="form.invalid">Edit post</button>
+      <button class="btn btn-primary m-1" *ngIf="formPost.id" (click)="onCancel()">Cancel edit</button>
+    </form>
+  </div>
